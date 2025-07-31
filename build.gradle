@@ -59,11 +59,14 @@ springBoot {
 
 // if u remove this will display all properties
 gitProperties {
+
 	failOnNoGitDirectory = false
 	//failOnUnableToExtractRepoInfo = false
 	keys = [
 			'git.branch',
 			'git.commit.id.abbrev',
+			'git.commit.user.name',
 			'git.commit.message.full'
 	]
+
 }
