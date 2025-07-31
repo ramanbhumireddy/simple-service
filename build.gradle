@@ -2,10 +2,12 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.5.3'
 	id 'io.spring.dependency-management' version '1.1.7'
+	//id 'com.gorylenko.gradle-git-properties' version '2.4.1'
+	id("com.gorylenko.gradle-git-properties") version "2.5.2"
 }
 
 group = 'com.coder'
-version = ''
+version = '1.0.0'
 
 java {
 	toolchain {
@@ -25,12 +27,43 @@ repositories {
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-actuator'
+
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
+
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 tasks.named('test') {
 	useJUnitPlatform()
+}
+
+//gitProperties {
+//	failOnNoGitDirectory = false
+//	failOnUnableToExtractRepoInfo = false
+//	failOnUnableToExtractRepoInfo = false
+//
+//	keys = [
+//			'git.branch',
+//			'git.commit.id.abbrev',
+//			'git.commit.user.name',
+//			'git.commit.message.full'
+//	]
+//}
+
+springBoot {
+	buildInfo()
+}
+
+// if u remove this will display all properties
+gitProperties {
+	failOnNoGitDirectory = false
+	//failOnUnableToExtractRepoInfo = false
+	keys = [
+			'git.branch',
+			'git.commit.id.abbrev',
+			'git.commit.message.full'
+	]
 }
