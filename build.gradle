@@ -7,7 +7,7 @@ plugins {
 }
 
 group = 'com.coder'
-version = '1.0.0'
+version = ''
 
 java {
 	toolchain {
